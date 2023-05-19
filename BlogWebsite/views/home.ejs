@@ -1,0 +1,42 @@
+<%- include("partials/header.ejs") -%> 
+
+
+<!-- Home and Starting content -->
+
+<h1>Home</h1>
+<p><%= startingContent %> </p>
+
+
+
+<!-- For each loop to print all the posts -->
+
+<% posts.forEach(function(post){ %>
+
+    <!-- prints titles -->
+    <h1><%=post.postTitle%></h1>                                    
+
+
+
+    <!-- prints body -->
+    <p>
+        <%=truncate(post.postBody)%>
+
+    <!-- prints Read more with link -->
+
+        <a href=<%="/posts/"+(post.postTitle)%>>Read more</a>
+    
+    </p>
+
+    <%   }) %>
+
+
+<%- include("partials/footer.ejs") -%> 
+
+
+    <!-- shortens post body -->
+    <% function truncate(input) { %>
+        <%     if (input.length > 100) { %>
+        <%        return input.substring(0, 100) + ' ...'; %>
+        <%     } %>
+        <%     return input; %>
+        <%  }; %>
